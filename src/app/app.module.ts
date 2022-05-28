@@ -12,6 +12,8 @@ import { AngularFireModule } from '@Angular/fire/compat';
 import { AngularFireDatabaseModule } from '@Angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { BookService } from './shared/book.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 @NgModule({
   declarations: [
@@ -27,8 +29,13 @@ import { BookService } from './shared/book.service';
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [BookService],
+  providers: [
+    BookService,
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig },
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
