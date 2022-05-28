@@ -8,6 +8,10 @@ import { AddBookComponent } from './components/add-book/add-book.component';
 import { EditBookComponent } from './components/edit-book/edit-book.component';
 import { BookListComponent } from './components/book-list/book-list.component';
 import { AngularMaterialModule } from './material/material.module';
+import { AngularFireModule } from '@Angular/fire/compat';
+import { AngularFireDatabaseModule } from '@Angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { BookService } from './shared/book.service';
 
 @NgModule({
   declarations: [
@@ -21,8 +25,10 @@ import { AngularMaterialModule } from './material/material.module';
     AppRoutingModule,
     AngularMaterialModule,
     BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
   ],
-  providers: [],
+  providers: [BookService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
