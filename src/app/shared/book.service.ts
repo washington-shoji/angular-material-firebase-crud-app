@@ -31,6 +31,17 @@ export class BookService {
       });
   }
 
+  /* Get book */
+  GetBook(id: string) {
+    this.bookRef = this.db.object('books-list/' + id);
+    return this.bookRef;
+  }
+  /* Get book list */
+  GetBookList() {
+    this.booksRef = this.db.list('books-list');
+    return this.booksRef;
+  }
+
   /* Update book */
   UpdateBook(id: string, book: Book) {
     this.bookRef
