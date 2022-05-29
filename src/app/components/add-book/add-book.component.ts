@@ -36,8 +36,8 @@ export class AddBookComponent implements OnInit {
     author_name: new FormControl('', [Validators.required]),
     publication_date: new FormControl('', [Validators.required]),
     binding_type: new FormControl('', [Validators.required]),
-    in_stock: new FormControl('Yes', [Validators.required]),
-    languages: new FormControl(this.languageArray, [Validators.required]),
+    in_stock: new FormControl('Yes'),
+    languages: new FormControl(this.languageArray),
   });
   BindingType: any = [
     'Paperback',
@@ -80,7 +80,7 @@ export class AddBookComponent implements OnInit {
 
   /* Add dynamic languages */
   add(event: MatChipInputEvent): void {
-    const input = event.input;
+    const input = event.chipInput?.inputElement;
     const value = event.value;
     // Add language
     if ((value || '').trim() && this.languageArray.length < 5) {
